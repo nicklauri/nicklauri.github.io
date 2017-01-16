@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-16T15:22:00+07:00</updated><id>http://localhost:4000//</id><title type="html">Nick Lauri</title><subtitle>A physics guy who love programming and security :3</subtitle><entry><title type="html">Fake Email</title><link href="http://localhost:4000/Test/" rel="alternate" type="text/html" title="Fake Email" /><published>2017-01-16T00:00:00+07:00</published><updated>2017-01-16T00:00:00+07:00</updated><id>http://localhost:4000/Test</id><content type="html" xml:base="http://localhost:4000/Test/">&lt;h1 id=&quot;gi-email-m-khng-cn-phi-ng-k-ti-khon&quot;&gt;Gửi email mà không cần phải đăng ký tài khoản?&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;Lưu ý:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Những chia sẽ này do trải nghiệm và tìm tòi của bản thân, không khuyến khích hành động vọc phá hệ thống không thuộc quyền sở hữu của bạn.&lt;/li&gt;
+  &lt;li&gt;Mọi hành động xâm hại đến hệ thống của bất kỳ ai sẽ khiến bạn vào tù ;)&lt;/li&gt;
+  &lt;li&gt;Khi đem bài viết này đến bất kỳ đâu, hãy ghi lại nguồn. Đó là một trong những cách tôn trọng công sức của mình.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Một ngày đẹp trời, mình ngồi đíp (deep) và tự hỏi là: ‘email được gửi đi như thế nào?’ (Chung quy là mình muốn tìm hiểu mail server). Hỏi Google-sama một lát là mình thấy cái này trên &lt;a href=&quot;https://vi.wikipedia.org/wiki/SMTP&quot;&gt;Wikipedia&lt;/a&gt;. Mình mở telnet và test thử thì ôi thôi nó thành công các chế ạ :smile: 
+Quá trình của mình test như sau: - Mình chọn trang &lt;a href=&quot;http://throwawaymail.com/&quot;&gt;ThrowAwayMail&lt;/a&gt; để test vì nó không tự động ngắt kết nối khi mình đang gõ :3. 
+Đia chỉ mail hiện tại của mình: kudrapesit@housat.com (nó tự động tạo chứ mình không được chọn) &lt;img src=&quot;//daynhauhoc.s3-ap-southeast-1.amazonaws.com/original/3X/6/a/6ad3f712a873c17d32bcae5811a2d702071dbc84.png&quot; width=&quot;473&quot; height=&quot;259&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bây giờ ta biết mail này có host là &lt;code class=&quot;highlighter-rouge&quot;&gt;housat.com&lt;/code&gt;, nhưng mail server thì ta chưa biết. Dùng lệnh &lt;code class=&quot;highlighter-rouge&quot;&gt;nslookup&lt;/code&gt; để dò mail server: Trên GNU/Linux, gõ &lt;code class=&quot;highlighter-rouge&quot;&gt;nslookup -query=mx housat.com&lt;/code&gt; Kết quả trả về: &lt;code class=&quot;highlighter-rouge&quot;&gt;housat.com mail exchanger = 10 mail.housat.com&lt;/code&gt;. Ta thấy được máy chủ mail ta cần hướng tới là &lt;code class=&quot;highlighter-rouge&quot;&gt;mail.housat.com&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Bây giờ tới phằn gửi email nà :joy: telnet tới mail.housat.com. Trên bash, gõ &lt;code class=&quot;highlighter-rouge&quot;&gt;telnet mail.housat.com 25&lt;/code&gt; (kết nối tới mail.housat.com tới cổng 25) vì cổng SMTP là 25. Đoạn chat giữa mình và server sẽ được tóm lược như sau: (Những dòng bắt đầu bằng số 200, 250,… là của server trả về) 
+&lt;img src=&quot;//daynhauhoc.s3-ap-southeast-1.amazonaws.com/original/3X/5/c/5cd297a21704cc9a931d6019148c8dd273068b2e.png&quot; width=&quot;690&quot; height=&quot;371&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Check inbox trong kia lại xem nào: &lt;img src=&quot;//daynhauhoc.s3-ap-southeast-1.amazonaws.com/original/3X/8/4/84c512a09d52bad7897f272716b34e09d74f6285.png&quot; width=&quot;476&quot; height=&quot;347&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;RAW DATA: &lt;code class=&quot;highlighter-rouge&quot;&gt;From noone@nicklauri.mail Fri Jan 13 XX:XX:XX 2017 Return-Path: &amp;lt;noone@nicklauri.mail&amp;gt; X-Original-To: kudrapesit@housat.com Delivered-To: throwawaymail@server.throwawaymail.com Received: from nicklauri.mail (unknown [42.XX.XXX.XXX]) by server.throwawaymail.com (Postfix) with SMTP id C5FFB1360CBD for &amp;lt;kudrapesit@housat.com&amp;gt;; Fri, 13 Jan 2017 XX:XX:XX +0100 (CET) from: &quot;Tester&quot; &amp;lt;noone@nicklauri.mail&amp;gt; to: &quot;Ahihi&quot; &amp;lt;kudrapesit@housat.com&amp;gt; subject: This is just a test Nothing to see here. Bye!&lt;/code&gt; (mình phải che IP nên nó XXX nha :joy: )&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Mình sẽ giải thích từng lệnh:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HELO domain.name&lt;/code&gt;: muốn nói chuyện với mail server thì phải chào nó 1 cái. &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;domain.name&amp;gt;&lt;/code&gt; là cái gì cũng được, như ví dụ ở trên, không hề có domain nào là &lt;code class=&quot;highlighter-rouge&quot;&gt;nicklauri.mail&lt;/code&gt; cả.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MAIL FROM: your_email@domain.name&lt;/code&gt;: tự giới thiệu email (giả) của bạn.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RCPT TO: target_email@hostname.com&lt;/code&gt;: gửi email này tới ai? (&lt;code class=&quot;highlighter-rouge&quot;&gt;RCPT&lt;/code&gt; là “recipient”).&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DATA&lt;/code&gt;: bắt đầu gửi nội dung mail. Cấu trúc nội dung mail:&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;From: &quot;your_name&quot; &amp;lt;your_email@domain.name&amp;gt;&lt;/code&gt;: Tự “khai” tên bạn (dĩ nhiên là bất cứ thứ gì).&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;To: &quot;anyname&quot; &amp;lt;target_email@hostname.com&amp;gt;&lt;/code&gt;: Bạn có thể đặt tên cho người khác bằng tên gì cũng được. - &lt;code class=&quot;highlighter-rouge&quot;&gt;Cc: cc_mail@hostname.com&lt;/code&gt;: có thể bỏ qua phần này :3 (nó là thêm địa chỉ mail CC thôi).&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Subject: tiêu_đề&lt;/code&gt;: chắc mình không cần phải nói cái này là gì. - Hãy bỏ 1 dòng trống và bắt đầu email-body và kết thúc bằng &lt;code class=&quot;highlighter-rouge&quot;&gt;\r\n.\r\n&lt;/code&gt; (tức là gõ enter rồi gõ 1 dấu chấm rồi enter).&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;QUIT&lt;/code&gt;: Chúng ta đã xong việc, ngắt kết nối thôi! Mình cũng thử test trên Yahoo mail và gửi thành công ;) dĩ nhiên là nó nằm trong mục Spam rồi. Còn mình thử test với Gmail nhưng nó báo là địa chỉ IP mình không đủ răng (rank, IP reputation) nên nó không thèm gởi luôn :) .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Và để thõa mãn “dã tâm” của mình, thì mình dùng Python viết 1 đoạn script nhỏ (nhưng vì mùa thi cử, mình không chăm chút nhiều được), tham khảo tại đây: &lt;a href=&quot;https://github.com/nicklauri/kpbasictools/blob/master/mailer.py&quot;&gt;mailer.py&lt;/a&gt; (yêu cầu phải cài thư viện &lt;code class=&quot;highlighter-rouge&quot;&gt;dnspython&lt;/code&gt; - thật ra có thể dùng popen và parse output). Để script chạy được thì phải clone hết repo của mình về mới xài được @@, mình xin lỗi vì sự bất tiện này. Script chạy tốt trên Linux, mình chưa thử trên Windows.&lt;/p&gt;
+
+&lt;p&gt;Kết: Mình có test thử với máy chủ Gmail, kết quả là bị mail server không gửi đi vì IP Reputation không có (IP local mà ;) )&lt;/p&gt;
+
+&lt;p&gt;Tài liệu tham khảo: &lt;a href=&quot;https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&quot;&gt;en.wikipedia.org&lt;/a&gt;&lt;/p&gt;</content><summary type="html">Gửi email mà không cần phải đăng ký tài khoản?</summary></entry><entry><title type="html">You’re up and running!</title><link href="http://localhost:4000/Hello-World/" rel="alternate" type="text/html" title="You're up and running!" /><published>2014-03-03T00:00:00+07:00</published><updated>2014-03-03T00:00:00+07:00</updated><id>http://localhost:4000/Hello-World</id><content type="html" xml:base="http://localhost:4000/Hello-World/">&lt;p&gt;Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/config.png&quot; alt=&quot;_config.yml&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the &lt;a href=&quot;https://github.com/barryclark/jekyll-now&quot;&gt;Jekyll Now repository&lt;/a&gt; on GitHub.&lt;/p&gt;</content><summary type="html">Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).</summary></entry></feed>

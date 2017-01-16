@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fake Email – Nick Lauri – A physics guy who love programming and security :3</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Gửi email mà không cần phải đăng ký tài khoản?
+
+" />
+    <meta property="og:description" content="Gửi email mà không cần phải đăng ký tài khoản?
+
+" />
+    
+    <meta name="author" content="Nick Lauri" />
+
+    
+    <meta property="og:title" content="Fake Email" />
+    <meta property="twitter:title" content="Fake Email" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Nick Lauri - A physics guy who love programming and security :3" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://avatars2.githubusercontent.com/u/19289883?v=3&u=f82276bd9d04f3b0e459755640a1f7f3e23ed24f&s=400" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Nick Lauri</a></h1>
+            <p class="site-description">A physics guy who love programming and security :3</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Fake Email</h1>
+
+  <div class="entry">
+    <h1 id="gi-email-m-khng-cn-phi-ng-k-ti-khon">Gửi email mà không cần phải đăng ký tài khoản?</h1>
+
+<p><strong>Lưu ý:</strong></p>
+
+<ul>
+  <li>Những chia sẽ này do trải nghiệm và tìm tòi của bản thân, không khuyến khích hành động vọc phá hệ thống không thuộc quyền sở hữu của bạn.</li>
+  <li>Mọi hành động xâm hại đến hệ thống của bất kỳ ai sẽ khiến bạn vào tù ;)</li>
+  <li>Khi đem bài viết này đến bất kỳ đâu, hãy ghi lại nguồn. Đó là một trong những cách tôn trọng công sức của mình.</li>
+</ul>
+
+<p>Một ngày đẹp trời, mình ngồi đíp (deep) và tự hỏi là: ‘email được gửi đi như thế nào?’ (Chung quy là mình muốn tìm hiểu mail server). Hỏi Google-sama một lát là mình thấy cái này trên <a href="https://vi.wikipedia.org/wiki/SMTP">Wikipedia</a>. Mình mở telnet và test thử thì ôi thôi nó thành công các chế ạ :smile: 
+Quá trình của mình test như sau: - Mình chọn trang <a href="http://throwawaymail.com/">ThrowAwayMail</a> để test vì nó không tự động ngắt kết nối khi mình đang gõ :3. 
+Đia chỉ mail hiện tại của mình: kudrapesit@housat.com (nó tự động tạo chứ mình không được chọn) <img src="//daynhauhoc.s3-ap-southeast-1.amazonaws.com/original/3X/6/a/6ad3f712a873c17d32bcae5811a2d702071dbc84.png" width="473" height="259" /></p>
+
+<ul>
+  <li>Bây giờ ta biết mail này có host là <code class="highlighter-rouge">housat.com</code>, nhưng mail server thì ta chưa biết. Dùng lệnh <code class="highlighter-rouge">nslookup</code> để dò mail server: Trên GNU/Linux, gõ <code class="highlighter-rouge">nslookup -query=mx housat.com</code> Kết quả trả về: <code class="highlighter-rouge">housat.com mail exchanger = 10 mail.housat.com</code>. Ta thấy được máy chủ mail ta cần hướng tới là <code class="highlighter-rouge">mail.housat.com</code>.</li>
+  <li>Bây giờ tới phằn gửi email nà :joy: telnet tới mail.housat.com. Trên bash, gõ <code class="highlighter-rouge">telnet mail.housat.com 25</code> (kết nối tới mail.housat.com tới cổng 25) vì cổng SMTP là 25. Đoạn chat giữa mình và server sẽ được tóm lược như sau: (Những dòng bắt đầu bằng số 200, 250,… là của server trả về) 
+<img src="//daynhauhoc.s3-ap-southeast-1.amazonaws.com/original/3X/5/c/5cd297a21704cc9a931d6019148c8dd273068b2e.png" width="690" height="371" /></li>
+  <li>Check inbox trong kia lại xem nào: <img src="//daynhauhoc.s3-ap-southeast-1.amazonaws.com/original/3X/8/4/84c512a09d52bad7897f272716b34e09d74f6285.png" width="476" height="347" /></li>
+  <li>RAW DATA: <code class="highlighter-rouge">From noone@nicklauri.mail Fri Jan 13 XX:XX:XX 2017 Return-Path: &lt;noone@nicklauri.mail&gt; X-Original-To: kudrapesit@housat.com Delivered-To: throwawaymail@server.throwawaymail.com Received: from nicklauri.mail (unknown [42.XX.XXX.XXX]) by server.throwawaymail.com (Postfix) with SMTP id C5FFB1360CBD for &lt;kudrapesit@housat.com&gt;; Fri, 13 Jan 2017 XX:XX:XX +0100 (CET) from: "Tester" &lt;noone@nicklauri.mail&gt; to: "Ahihi" &lt;kudrapesit@housat.com&gt; subject: This is just a test Nothing to see here. Bye!</code> (mình phải che IP nên nó XXX nha :joy: )</li>
+</ul>
+
+<p>Mình sẽ giải thích từng lệnh:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">HELO domain.name</code>: muốn nói chuyện với mail server thì phải chào nó 1 cái. <code class="highlighter-rouge">&lt;domain.name&gt;</code> là cái gì cũng được, như ví dụ ở trên, không hề có domain nào là <code class="highlighter-rouge">nicklauri.mail</code> cả.</li>
+  <li><code class="highlighter-rouge">MAIL FROM: your_email@domain.name</code>: tự giới thiệu email (giả) của bạn.</li>
+  <li><code class="highlighter-rouge">RCPT TO: target_email@hostname.com</code>: gửi email này tới ai? (<code class="highlighter-rouge">RCPT</code> là “recipient”).</li>
+  <li><code class="highlighter-rouge">DATA</code>: bắt đầu gửi nội dung mail. Cấu trúc nội dung mail:</li>
+  <li><code class="highlighter-rouge">From: "your_name" &lt;your_email@domain.name&gt;</code>: Tự “khai” tên bạn (dĩ nhiên là bất cứ thứ gì).</li>
+  <li><code class="highlighter-rouge">To: "anyname" &lt;target_email@hostname.com&gt;</code>: Bạn có thể đặt tên cho người khác bằng tên gì cũng được. - <code class="highlighter-rouge">Cc: cc_mail@hostname.com</code>: có thể bỏ qua phần này :3 (nó là thêm địa chỉ mail CC thôi).</li>
+  <li><code class="highlighter-rouge">Subject: tiêu_đề</code>: chắc mình không cần phải nói cái này là gì. - Hãy bỏ 1 dòng trống và bắt đầu email-body và kết thúc bằng <code class="highlighter-rouge">\r\n.\r\n</code> (tức là gõ enter rồi gõ 1 dấu chấm rồi enter).</li>
+  <li><code class="highlighter-rouge">QUIT</code>: Chúng ta đã xong việc, ngắt kết nối thôi! Mình cũng thử test trên Yahoo mail và gửi thành công ;) dĩ nhiên là nó nằm trong mục Spam rồi. Còn mình thử test với Gmail nhưng nó báo là địa chỉ IP mình không đủ răng (rank, IP reputation) nên nó không thèm gởi luôn :) .</li>
+</ul>
+
+<p>Và để thõa mãn “dã tâm” của mình, thì mình dùng Python viết 1 đoạn script nhỏ (nhưng vì mùa thi cử, mình không chăm chút nhiều được), tham khảo tại đây: <a href="https://github.com/nicklauri/kpbasictools/blob/master/mailer.py">mailer.py</a> (yêu cầu phải cài thư viện <code class="highlighter-rouge">dnspython</code> - thật ra có thể dùng popen và parse output). Để script chạy được thì phải clone hết repo của mình về mới xài được @@, mình xin lỗi vì sự bất tiện này. Script chạy tốt trên Linux, mình chưa thử trên Windows.</p>
+
+<p>Kết: Mình có test thử với máy chủ Gmail, kết quả là bị mail server không gửi đi vì IP Reputation không có (IP local mà ;) )</p>
+
+<p>Tài liệu tham khảo: <a href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">en.wikipedia.org</a></p>
+
+  </div>
+
+  <div class="date">
+    Written on January 16, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:ipman.ak@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/nicklauri116"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/nicklauri"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>
